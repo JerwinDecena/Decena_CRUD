@@ -13,7 +13,9 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return Student::all();
+        $data['student'] = Student::all();
+        return view('student.index', $data);
+        //return Student::all();
         //return Student::where('province', 'Arizona')->get();
          
         //return Student::where('province', 'Arizona')
@@ -47,7 +49,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return view('student.create');
     }
 
     /**
@@ -66,6 +68,8 @@ class StudentController extends Controller
         $student->zip = $request['fname'];
         $student->birthdate = $request['fname'];
         $student->save();
+
+        return redirect()->to('student');
 
     }
 
@@ -90,7 +94,8 @@ class StudentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data['student'] = Student::find($id);
+        return view('student.edit', $data);
     }
 
     /**
@@ -98,7 +103,19 @@ class StudentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        
+        $student = Student::find($id);
+        $student->fname = $request['fname'];
+        $student->lname = $request['fname'];
+        $student->email = $request['fname'];
+        $student->phone = $request['fname'];
+        $student->address = $request['fname'];
+        $student->city = $request['fname'];
+        $student->state = $request['fname'];
+        $student->zip = $request['fname'];
+        $student->birthdate = $request['fname'];
+        $student->save();
+        return redirect()->toback();
     }
 
     /**
@@ -108,5 +125,6 @@ class StudentController extends Controller
     {
         $student = Student::find($id);
         $student->delete();
+        return redirect()->to('students');
     }
 }
