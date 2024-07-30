@@ -26,18 +26,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($students as $student)
+                            @foreach ($student as $student)
                             <tr>
-                                <td>{{ $students->Fullname }}</td>
-                                <td>{{ $students->Email }}</td>
-                                <td>{{ $students->Phone }}</td>
-                                <td>{{ $students->Address }}</td>
-                                <td>{{ $students->City }}</td>
-                                <td>{{ $students->Province }}</td>
-                                <td>{{ $students->Zip }}</td>
-                                <td>{{ $students->Birthdate }}</td>
+                                <td>{{ $student->Fullname }}</td>
+                                <td>{{ $student->Email }}</td>
+                                <td>{{ $student->Phone }}</td>
+                                <td>{{ $student->Address }}</td>
+                                <td>{{ $student->City }}</td>
+                                <td>{{ $student->Province }}</td>
+                                <td>{{ $student->Zip }}</td>
+                                <td>{{ $student->Birthdate }}</td>
                                 <td>
-                                    <a href="{{ url('student', $student->id}}/edit" class="btn btn-outline-success-btn-sm">edit</a>
+                                    <a href="{{ url('student', $student->id)}}/edit" class="btn btn-outline-success-btn-sm">edit</a>
                                     <form action="{{ url('student', $student->id) }}" method="post">
                                         @method('method')
                                         @csrf

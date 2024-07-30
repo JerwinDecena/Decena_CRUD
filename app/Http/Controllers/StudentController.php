@@ -69,6 +69,15 @@ class StudentController extends Controller
         $student->birthdate = $request['fname'];
         $student->save();
 
+        $request ->validate([
+
+            'fname' => 'required',
+            'lname' => 'required',
+            'email' => 'required',
+            'phone' => 'required'
+
+       
+        ]);
         return redirect()->to('student');
 
     }
